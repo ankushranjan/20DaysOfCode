@@ -1,0 +1,25 @@
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .calendar th {
+    background-color: #ddd;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+  }
+  .calendar td {
+    border: 1px solid #ccc;
+    text-align: center;
+    vertical-align: top;
+    padding: 8px;
+  }
+  .event {
+    background-color: #eee;
+    margin-top: 5px;
+    padding: 5px;
+  }
+  .event a {
+    color: #000;
+    text-decoration: none;
+  }
