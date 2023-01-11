@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Timer</title>
+    <style>
+        /*Reset default styles*/
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /*Body styling*/
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #3498db;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+        #timer {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        /*Buttons styling*/
+        #buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #buttons button {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background: #2ecc71;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        /* Change the color of the button on hover*/
+        #buttons button:hover{
+            background: #27ae60;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="timer">
+      <p id="time">00:00:00</p>
+    </div>
+
+    <div id="buttons">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset</button>
+    </div>
+
+    <script>
+        let timer;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        const time = document.getElementById("time");
+        const start = document.getElementById("start");
+        const stop = document.getElementById("stop");
+        const reset = document.getElementById("reset");
+
+start.addEventListener("click", startTimer);
+stop.addEventListener("click", stopTimer);
+reset.addEventListener("click", resetTimer);
+
+function startTimer() {
+    timer = setInterval(() => {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes === 60) {
+            minutes = 0;
+            hours++;
+        }
+        time.textContent = `${hours < 10 ? "0" : ""}${hours}:${minutes < 10 ? "0" : ""}${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    }, 1000);
+    start.disabled = true;
+    stop.disabled = false;
+}
+
+function stopTimer() {
+    clearInterval(timer);
+    start.disabled = false;
+    stop.disabled = true;
+}
+
+function resetTimer() {
+    clearInterval(timer);
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    time.textContent = "00:00:00";
+    start.disabled = false;
+    stop.disabled = true;
+}
+</script>
+</body>
+</html>
