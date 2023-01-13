@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3D Model Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.min.js"></script>
+    <style>
+      /* CSS styles for the 3D model container */
+      body {
+        background-color: #87CEEB;
+        margin: 0;
+        overflow: hidden;
+      }
+      #3d-model-container {
+        width: 100%;
+        height: 800px;
+      }
+      #info {
+        position: absolute;
+        bottom: 0;
+        padding: 10px;
+        color: white;
+        background-color: rgba(0,0,0,0.5);
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="3d-model-container"></div>
+    <div id="info">This is Day 5</div>
+    <script>
+      // JavaScript code to initialize and render 3D models
+      // Step 1: Create a scene
+      var scene = new THREE.Scene();
+
+      // Step 2: Create a camera
+      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+      // Step 3: Create a renderer
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.getElementById("3d-model-container").appendChild( renderer.domElement );
+
+      // Step 4: Create a plane for the bottom
+      var planeGeometry = new THREE.PlaneGeometry( 100, 100, 32 );
+      var planeMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x555555, shininess: 30 } );
+      var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+      plane.rotation.x = -0.5 * Math.PI;
+      plane.position.y = -2;
+      scene.add( plane );
+
+      // Step 5: Create a cube
+      var cubeGeometry = new THREE.BoxGeometry( 1, 1, 1 );
+      var cubeMaterial = new THREE.MeshPhongMaterial( { color: getRandomColor() } );
+      var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
+      scene.add( cube );
+
+      // Step 6: Position the camera
+      camera.position.z = 15;
+
+      // Step 7: Animate the cube
+      function animate() {
+        requestAnimationFrame( animate );
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        cube.material.color.set(getRandomColor());
+        renderer.render( scene, camera );
+      }
+      animate();
+
+      // Step 8: Function to get random color
+      function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    </script>
+  </body>
+</html>
