@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Cube</title>
+    <style>
+        /* Style for the button */
+        #bigger-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        /* Style for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <button id="bigger-btn">Change Color and Size</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script>
+        // Create a scene, camera and renderer
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+        let renderer = new THREE.WebGLRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        document.body.appendChild( renderer.domElement );
+
+        // Create a cube
+        let cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshLambertMaterial({color: 0xff0000})
+        );
+        cube.geometry.computeFaceNormals();
+        cube.geometry.computeVertexNormals();
+        scene.add(cube);
+        camera.position.z = 5;
+
+        // Add a light
+        let light = new THREE.PointLight(0xFFFFFF, 1, 1000);
+        light.position.set(0, 0, 5);
+        scene.add(light);
+
+        // Animate the cube
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Add event listener to the button
+        let biggerBtn = document.querySelector("#bigger-btn");
+        biggerBtn.addEventListener("click", function () {
+            cube.material.color.set(getRandomColor());
+            cube.scale.x += 0.1;
+          cube.scale.z += 0.1;
+document.body.style.backgroundColor = getRandomColor();
+});
+      
+       // Function to generate a random color
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+</body>
+</html>
