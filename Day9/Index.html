@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JDFC BANK</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/7ScMppH/1528-768x591-removebg-preview.png" alt="Bank Balance Checker logo">
+    </header>
+    <main>
+        <form>
+            <label for="account-number">Account Number:</label>
+            <input type="text" id="account-number" placeholder="Enter your account number">
+            <button type="submit" id="submit-button">Check Balance</button>
+        </form>
+        <p id="balance-display"></p>
+        <canvas id="chart"></canvas>
+    </main>
+    <footer>
+        <p>Copyright ©2022</p>
+    </footer>
+    <script>
+        var submitButton = document.getElementById("submit-button");
+        var balanceDisplay = document.getElementById("balance-display");
+        var ctx = document.getElementById('chart').getContext('2d');
+        var chart;
+
+        submitButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            var balance = Math.floor(Math.random() * 10000);
+            balanceDisplay.innerHTML = "Your balance is $" + balance;
+            chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Groceries', 'Entertainment', 'Shopping', 'Bills'],
+                    datasets: [{
+                        label: 'Spending Categories',
+                        data: [25, 15, 35, 25],
+                        backgroundColor: ['#ff6384', '#4bc0c0', '#ffcd56', '#36a2eb'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                    },
+                }
+            });
+        });
+    </script>
+</body>
+</html>
