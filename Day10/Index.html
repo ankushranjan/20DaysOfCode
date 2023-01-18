@@ -1,144 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>3D Models</title>
-    <style>
-        /* Style for the buttons */
-        #bigger-btn {
-            position: absolute;
-            bottom: 20px;
-            left: 25%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #next-btn {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #prev-btn {
-            position: absolute;
-            bottom: 20px;
-            left: 75%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        /* Style for the body */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ff0000;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Clients Review UI </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <button id="bigger-btn">Change Color and Size</button>
-    <button id="prev-btn">Previous Model</button>
-    <button id="next-btn">Next Model</button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-    <script>
-        // Create a scene, camera and renderer
-        let scene = new THREE.Scene();
-        let camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-        let renderer = new THREE.WebGLRenderer();
-        renderer.setClearColor(getRandomColor());
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        document.body.appendChild( renderer.domElement );
+    <!-- Main Container for Clients Review -->
+    <div class="container">
+        <h2> Our Happy Clients </h2>
+        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, atque? Repudiandae
+            possimus asperiores hic nemo id a molestiae minus impedit!</p>
+    
+        <!-- Clients Review Section -->
+        <div class="reviewSection">
 
-        // Create models
-        let cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshLambertMaterial({color: 0xff0000})
-        );
-        let sphere = new THREE.Mesh(
-            new THREE.SphereGeometry(1, 20, 20),
-            new THREE.MeshLambertMaterial({color: 0x00ff00})
-        );
-        let cylinder = new THREE.Mesh(
-            new THREE.CylinderGeometry(1, 1, 2, 20),
-            new THREE.MeshLambertMaterial({color: 0x0000ff})
-        );
-        let models = [cube, sphere, cylinder];
-        let currentModelIndex = 0;
+        <!-- Clients Review-1 Section Starts from Here  -->
+            <div class="reviewItem">
+                <div class="top">
+                    <div class="clientImage">
+                        <img src="./client.png" alt="">
+                        <span>Raju Sheoran</span>
+                    </div>
+                    <ul>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-regular fa-star"></i></li>
+                        <li><i class="fa-regular fa-star"></i></li>
+                    </ul>
+                </div>
+                <article>
+                    <p class="review">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
+                        voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque,
+                        facere exercitationem!</p>
+                    <p>Jan 01, 2023</p>
+                </article>
+            </div>
 
-        // Add the models to the scene
-        scene.add(models[currentModelIndex]);
+        <!-- Clients Review-2 Section Starts from Here  -->
+            <div class="reviewItem">
+                <div class="top">
+                    <div class="clientImage">
+                        <img src="./client.png" alt="">
+                        <span>Raju Sheoran</span>
+                    </div>
+                    <ul>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-regular fa-star"></i></li>
+                        <li><i class="fa-regular fa-star"></i></li>
+                    </ul>
+                </div>
+                <article>
+                    <p class="review">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
+                        voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque,
+                        facere exercitationem!</p>
+                    <p>Jan 01, 2023</p>
+                </article>
+            </div>
 
-        // Add a light
-        let light = new THREE.PointLight(0xFFFFFF, 1, 1000);
-        light.position.set(0, 0, 5);
-        scene.add(light);
-
-        // Animate the scene
-        function animate() {
-            requestAnimationFrame(animate);
-            models[currentModelIndex].rotation.x += 0.01;
-            models[currentModelIndex].rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Add event listener to the buttons
-        let biggerBtn = document.querySelector("#bigger-btn");
-        biggerBtn.addEventListener("click", function () {
-            models[currentModelIndex].material.color.set(getRandomColor());
-            models[currentModelIndex].scale.x += 0.1;
-            models[currentModelIndex].scale.y += 0.1;
-            models[currentModelIndex].scale.z += 0.1;
-            document.body.style.backgroundColor = getRandomColor();
-        });
-
-        let nextBtn = document.querySelector("#next-btn");
-        nextBtn.addEventListener("click", function () {
-            scene.remove(models[currentModelIndex]);
-            currentModelIndex = (currentModelIndex + 1) % models.length;
-            scene.add(models[currentModelIndex]);
-        });
-
-        let prevBtn = document.querySelector("#prev-btn");
-        prevBtn.addEventListener("click", function () {
-            scene.remove(models[currentModelIndex]);
-            currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
-            scene.add(models[currentModelIndex]);
-        });
-
-        // Function to generate a random color
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-    </script>
+        <!-- Clients Review-3 Section Starts from Here  -->
+            <div class="reviewItem">
+                <div class="top">
+                    <div class="clientImage">
+                        <img src="./client.png" alt="">
+                        <span>Raju Sheoran</span>
+                    </div>
+                    <ul>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-solid fa-star"></i></li>
+                        <li><i class="fa-regular fa-star"></i></li>
+                        <li><i class="fa-regular fa-star"></i></li>
+                    </ul>
+                </div>
+                <article>
+                    <p class="review">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit beatae ipsa
+                        voluptatibus perferendis quos eaque nemo error tempora harum quas, laudantium tenetur, neque,
+                        facere exercitationem!</p>
+                    <p>Jan 01, 2023</p>
+                </article>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
-
