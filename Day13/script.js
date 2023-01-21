@@ -14,19 +14,3 @@ for (let i = 0; i < buttons.length; i++) {
       operator = '';
       num1 = '';
       num2 = '';
-    } else if (value == '.' && !text.includes(".")) {
-        display.value = text + value;
-      } else if (value == '+' || value == '-' || value == '*' || value == '/') {
-        operator = value;
-        num1 = parseFloat(text);
-        display.value = '';
-      } else if (value == '=') {
-        num2 = parseFloat(text);
-        let result = eval(num1 + " " + operator + " " + num2);
-        display.value = result;
-      } else {
-        display.value = text + value;
-      }
-    });
-  }
-  
