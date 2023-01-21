@@ -19,7 +19,7 @@
   div {
     display: flex;
     padding: 20px;
-    background-color: #e92d56;
+    background-color: #2de9e0;
   }
   
   p {
@@ -28,7 +28,7 @@
   
   a {
     font-weight: 900;
-    color: #ffbebe;
+    color: #3ecab8;
     text-decoration-style: dashed;
   }
   
@@ -49,7 +49,7 @@
     display: flex;
     padding: 0;
     margin: 0;
-    background-color: #e7e7e7;
+    background-color: #f1d3d3;
     font-weight: 900;
     font-family: Verdana, Geneva, sans-serif;
   }
