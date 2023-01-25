@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+    td {
+      border: 1px solid black;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <table id="board">
+    <tr>
+      <td id="cell-1"></td>
+      <td id="cell-2"></td>
+      <td id="cell-3"></td>
+    </tr>
+    <tr>
+      <td id="cell-4"></td>
+      <td id="cell-5"></td>
+      <td id="cell-6"></td>
+    </tr>
+    <tr>
+      <td id="cell-7"></td>
+      <td id="cell-8"></td>
+      <td id="cell-9"></td>
+    </tr>
+  </table>
+  <script>
+    const board = document.getElementById("board");
+    let currentPlayer = "X";
+    let gameBoard = ["", "", "", "", "", "", "", "", ""];
+    let gameWon = false;
+
+    board.addEventListener("click", (e) => {
+      if (gameWon) return;
+      if (e.target.tagName === "TD") {
+        let cellId = e.target.id;
+        let cellIndex = parseInt(cellId.split("-")[1]) - 1;
+        if (gameBoard[cellIndex] === "") {
+          gameBoard[cellIndex] = currentPlayer;
+          e.target.textContent = currentPlayer;
+          checkGame();
+          currentPlayer = currentPlayer === "X" ? "O" : "X";
+}
+}
+});
+
+function checkGame() {
+  let winner = null;
+  let winCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < winCombinations.length; i++) {
+    let combination = winCombinations[i];
+    if (
+      gameBoard[combination[0]] === currentPlayer &&
+      gameBoard[combination[1]] === currentPlayer &&
+      gameBoard[combination[2]] === currentPlayer
+    ) {
+      winner = currentPlayer;
+      break;
+    }
+  }
+  if (winner) {
+    alert(`Player ${winner} wins!`);
+    gameWon = true;
+  } else if (gameBoard.indexOf("") === -1) {
+    alert("It's a draw!");
+    gameWon = true;
+  }
+}
+function resetGame() {
+  gameBoard = ["", "", "", "", "", "", "", "", ""];
+  gameWon = false;
+  currentPlayer = "X";
+  for (let i = 0; i < 9; i++) {
+    document.getElementById(`cell-${i + 1}`).textContent = "";
+  }
+}
+</script>
+</body>
+</html>
