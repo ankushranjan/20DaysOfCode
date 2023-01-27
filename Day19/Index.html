@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fitness Tracker Webpage Design and UI.</title>
+    <style>
+      /* Styling for the overall website */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Styling for the header */
+      header {
+        background-color: #3F51B5;
+        color: white;
+        text-align: center;
+        padding: 1em;
+      }
+
+      /* Styling for the main content */
+      main {
+        margin: 0;
+        padding: 1em;
+      }
+
+      /* Styling for the workout log table */
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #3F51B5;
+        color:white;
+      }
+
+      /* Styling for the add workout form */
+      form {
+        margin-top: 1em;
+        display: flex;
+        flex-wrap: wrap;
+        align-items:center;
+        justify-content:center;
+      }
+
+      label, input[type="submit"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        color:white;
+      }
+
+      input[type="text"], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #3F51B5;
+        border-radius: 4px;
+        background-color:#f5f5f5;
+      }
+
+      input[type="submit"] {
+        background-color: #3F51B5;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Fitness Tracker</h1>
+    </header>
+    <main>
+      <h2>Workout Log</h2>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Exercise</th>
+          <th>Sets</th>
+          <th>Reps</th>
+          <th>Weight</th>
+        </tr>
+        <tr>
+          <td>1/1/2021</td>
+          <td>Squat</td>
+          <td>3</td>
+          <td>8</td>
+          <td>225</td>
+        </tr>
+        <tr>
+          <td>1/2/2021</td>
+          <td>Deadlift</td>
+          <td>1</td>
+          <td>5</td>
+          <td>315</td>
+        </tr>
+        <!-- Additional rows for past workouts-->
+</table>
+<h2>Add Workout</h2>
+<form>
+<label for="date">Date:</label>
+<input type="text" id="date" name="date" placeholder="mm/dd/yyyy">
+<label for="exercise">Exercise:</label>
+<select id="exercise" name="exercise">
+<option value="squat">Squat</option>
+<option value="deadlift">Deadlift</option>
+<option value="bench">Bench Press</option>
+<!-- Additional options for exercises -->
+</select>
+<label for="sets">Sets:</label>
+<input type="text" id="sets" name="sets" placeholder="3">
+<label for="reps">Reps:</label>
+<input type="text" id="reps" name="reps" placeholder="8">
+<label for="weight">Weight:</label>
+<input type="text" id="weight" name="weight" placeholder="225">
+<input type="submit" value="Add Workout">
+</form>
+</main>
+
+  </body>
+</html>
