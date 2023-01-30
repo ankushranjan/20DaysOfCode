@@ -1,5 +1,3 @@
-#20daysofcode LinkedIn/Github post links
-21BCG10012 Ankush Ranjan
 Day 1:
 Github ->  https://github.com/ankushranjan/20DaysOfCode/tree/main/Day1
 Linkedin -> https://rb.gy/x9yhoq 
